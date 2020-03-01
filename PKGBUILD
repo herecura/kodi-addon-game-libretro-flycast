@@ -1,21 +1,22 @@
 # Maintainer: BlackEagle <ike.devolder@gmail.com>>
 
-pkgname=kodi-addon-game-libretro-reicast
-pkgver=0.1.0.11
+pkgname=kodi-addon-game-libretro-flycast
+pkgver=0.1.0.17
 _codename=Leia
-pkgrel=9
+pkgrel=1
 pkgdesc="Libretro wrapper for Kodi's Game API"
 arch=('x86_64')
 url='https://github.com/kodi-game/game.libretro.reicast'
 license=('GPL')
 groups=('kodi-addons' 'kodi-addons-game')
-depends=('kodi-addon-game-libretro' 'libretro-reicast')
+depends=('kodi-addon-game-libretro' 'libretro-flycast')
 makedepends=('cmake' 'kodi-dev')
+replaces=('kodi-addon-game-libretro-reicast')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.reicast/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('22e58084e0747369c6b41b806b6ccc8b5ac7ee3d30af7289e802554d153dd393866c66bd25a6ef0fd90e6700d591476f38f6eaedbe44435fe09e3ba510b73add')
+sha512sums=('955a6368eb66ee8d9247424620adea22e5bf3d0ca18bf66ce7b82f323a0f49ec9ab8e1ce41a829646ca10cc719ae0f840345e61de60a5a6513224c83acce630c')
 
 build() {
-    cd "game.libretro.reicast-$pkgver-$_codename"
+    cd "game.libretro.flycast-$pkgver-$_codename"
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-    cd "game.libretro.reicast-$pkgver-$_codename"
+    cd "game.libretro.flycast-$pkgver-$_codename"
 	make DESTDIR="$pkgdir/" install
 }
 
